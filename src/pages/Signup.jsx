@@ -23,8 +23,11 @@ const Signup = () => {
   const [loading, setLoading] = useState(false);
   const headingRef = useRef(null);
 
-// Variable ke saath ek default localhost ka fallback zaroor rakhein
-const API_BASE_URL = import.meta.env.VITE_API_URL;
+  // ==========================
+  // CONFIGURATION: API URL
+  // ==========================
+  // import.meta.env agar undefined ho toh fallback direct production URL par jayega
+  const API_BASE_URL = import.meta.env.VITE_API_URL || "https://unikart-backend.onrender.com";
 
   useEffect(() => {
     gsap.to(headingRef.current, {
@@ -36,7 +39,9 @@ const API_BASE_URL = import.meta.env.VITE_API_URL;
     });
   }, []);
 
-
+  // ==========================
+  // HANDLER: SEND OTP
+  // ==========================
   const handleSendOtp = async () => {
     if (!values.email || errors.email) {
       alert("Please enter a valid email first");
@@ -44,14 +49,14 @@ const API_BASE_URL = import.meta.env.VITE_API_URL;
     }
     setLoading(true);
     try {
-      // PATH UPDATED: Using dynamic URL
+      // String template literal ko clean rakha gaya hai
       const res = await axios.post(`${API_BASE_URL}/api/user/send-otp`, { 
         email: values.email 
       });
       alert(res.data.message);
       setOtpSent(true);
     } catch (error) {
-      alert(error.response?.data?.message || "Error sending OTP");
+      alert(error.response?.data?.message || "Error sending OTP. Please check your connection.");
     } finally {
       setLoading(false);
     }
@@ -84,14 +89,13 @@ const API_BASE_URL = import.meta.env.VITE_API_URL;
         formData.append("sel_role", values.sel_role);
         formData.append("otp", values.otp); 
 
-        
         if (values.sel_role === "teacher") formData.append("teacher_id", values.teacher_id);
         if (values.sel_role === "admin") formData.append("admin_id", values.admin_id);
         if (values.sel_role === "student" && values.id_card) {
           formData.append("id_card", values.id_card);
         }
 
-        // PATH UPDATED: Using dynamic URL
+        // Signup post call with correct URL
         const res = await axios.post(`${API_BASE_URL}/api/user/signup`, formData, {
           headers: { "Content-Type": "multipart/form-data" }
         });
