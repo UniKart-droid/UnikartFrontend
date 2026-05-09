@@ -23,6 +23,9 @@ const Signup = () => {
   const [loading, setLoading] = useState(false);
   const headingRef = useRef(null);
 
+  // Define API Base URL dynamically
+  const API_BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:8000";
+
   useEffect(() => {
     gsap.to(headingRef.current, {
       y: 20,
@@ -41,7 +44,8 @@ const Signup = () => {
     }
     setLoading(true);
     try {
-      const res = await axios.post("http://localhost:8000/api/user/send-otp", { 
+      // PATH UPDATED: Using dynamic URL
+      const res = await axios.post(`${API_BASE_URL}/api/user/send-otp`, { 
         email: values.email 
       });
       alert(res.data.message);
@@ -87,7 +91,8 @@ const Signup = () => {
           formData.append("id_card", values.id_card);
         }
 
-        const res = await axios.post("http://localhost:8000/api/user/signup", formData, {
+        // PATH UPDATED: Using dynamic URL
+        const res = await axios.post(`${API_BASE_URL}/api/user/signup`, formData, {
           headers: { "Content-Type": "multipart/form-data" }
         });
 
