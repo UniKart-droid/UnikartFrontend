@@ -24,7 +24,7 @@ const Signup = () => {
   const headingRef = useRef(null);
 
   // Define API Base URL dynamically
-  const API_BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:8000";
+  const API_BASE_URL = import.meta.env.VITE_API_URL ;
 
   useEffect(() => {
     gsap.to(headingRef.current, {
