@@ -24,7 +24,7 @@ const Signup = () => {
   const headingRef = useRef(null);
 
 // Variable ke saath ek default localhost ka fallback zaroor rakhein
-const API_BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:8000";
+const API_BASE_URL = import.meta.env.VITE_API_URL;
 
   useEffect(() => {
     gsap.to(headingRef.current, {
