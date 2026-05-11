@@ -26,9 +26,7 @@ const CareerInternship = ({
   const [selectedOpp, setSelectedOpp] = useState(null);
 
   // DEPLOYED BACKEND URL
-  const API_BASE_URL =
-    import.meta.env.VITE_API_URL ||
-    "https://unikartweb-production.up.railway.app";
+const API = import.meta.env.VITE_API_URL || "https://unikartweb-production.up.railway.app";
 
   useEffect(() => {
 
