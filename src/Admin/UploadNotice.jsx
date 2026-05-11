@@ -105,12 +105,14 @@ const UploadNotice = () => {
         <AdminSidebar />
 
         <div className="flex-1 mt-24 px-8 py-8">
-          <div className="max-w-2xl bg-white shadow-lg rounded-2xl p-8">
-            <h2 className="text-3xl font-bold text-gray-800 mb-2">
+          <div className="max-w-2xl bg-white shadow-lg rounded-2xl p-8 border border-gray-200">
+            <h2 className="text-3xl font-bold text-black mb-2">
               Upload New Notice
             </h2>
 
-           
+            <p className="text-gray-900 font-medium mb-8 text-sm">
+              Authorized Admin Access Only
+            </p>
 
             <form
               onSubmit={formik.handleSubmit}
@@ -118,7 +120,7 @@ const UploadNotice = () => {
             >
               {/* Title */}
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
+                <label className="block text-sm font-bold text-black mb-1">
                   Title
                 </label>
 
@@ -127,11 +129,11 @@ const UploadNotice = () => {
                   name="title"
                   placeholder="Notice Title"
                   {...formik.getFieldProps("title")}
-                  className="border border-gray-300 px-4 py-2 rounded-lg w-full focus:ring-2 focus:ring-orange-400 outline-none"
+                  className="border border-gray-400 px-4 py-2 rounded-lg w-full focus:ring-2 focus:ring-orange-500 outline-none text-black placeholder:text-gray-500 font-medium"
                 />
 
                 {formik.touched.title && formik.errors.title && (
-                  <p className="text-red-500 text-sm mt-1">
+                  <p className="text-red-600 text-sm font-bold mt-1">
                     {formik.errors.title}
                   </p>
                 )}
@@ -139,7 +141,7 @@ const UploadNotice = () => {
 
               {/* Description */}
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
+                <label className="block text-sm font-bold text-black mb-1">
                   Description
                 </label>
 
@@ -148,12 +150,12 @@ const UploadNotice = () => {
                   rows={4}
                   placeholder="Notice Description"
                   {...formik.getFieldProps("description")}
-                  className="border border-gray-300 px-4 py-2 rounded-lg w-full resize-none focus:ring-2 focus:ring-orange-400 outline-none"
+                  className="border border-gray-400 px-4 py-2 rounded-lg w-full resize-none focus:ring-2 focus:ring-orange-500 outline-none text-black placeholder:text-gray-500 font-medium"
                 />
 
                 {formik.touched.description &&
                   formik.errors.description && (
-                    <p className="text-red-500 text-sm mt-1">
+                    <p className="text-red-600 text-sm font-bold mt-1">
                       {formik.errors.description}
                     </p>
                   )}
@@ -161,7 +163,7 @@ const UploadNotice = () => {
 
               {/* File */}
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-1">
+                <label className="block text-sm font-bold text-black mb-1">
                   Attachment (PDF Only)
                 </label>
 
@@ -170,16 +172,16 @@ const UploadNotice = () => {
                   name="file"
                   accept=".pdf"
                   onChange={handleFileChange}
-                  className="block w-full text-sm text-gray-500 
+                  className="block w-full text-sm text-black font-medium
                   file:mr-4 file:py-2 file:px-4 
                   file:rounded-full file:border-0 
-                  file:text-sm file:font-semibold 
-                  file:bg-orange-50 file:text-orange-700 
-                  hover:file:bg-orange-100"
+                  file:text-sm file:font-bold 
+                  file:bg-black file:text-white 
+                  hover:file:bg-gray-800 cursor-pointer"
                 />
 
                 {formik.errors.file && (
-                  <p className="text-red-500 text-sm mt-1">
+                  <p className="text-red-600 text-sm font-bold mt-1">
                     {formik.errors.file}
                   </p>
                 )}
@@ -191,8 +193,8 @@ const UploadNotice = () => {
                 disabled={loading}
                 className={`mt-2 px-6 py-3 rounded-lg font-bold text-white shadow-md transition-all active:scale-95 ${
                   loading
-                    ? "bg-gray-400 cursor-not-allowed"
-                    : "bg-orange-500 hover:bg-orange-600"
+                    ? "bg-gray-500 cursor-not-allowed"
+                    : "bg-orange-600 hover:bg-orange-700"
                 }`}
               >
                 {loading ? "Uploading..." : "Upload Notice"}
@@ -201,8 +203,8 @@ const UploadNotice = () => {
 
             {/* Recently Uploaded Preview */}
             {notices.length > 0 && (
-              <div className="mt-10 border-t pt-8">
-                <h3 className="text-2xl font-semibold mb-6 text-gray-700">
+              <div className="mt-10 border-t border-gray-300 pt-8">
+                <h3 className="text-2xl font-bold mb-6 text-black">
                   Recently Uploaded
                 </h3>
 
@@ -210,19 +212,19 @@ const UploadNotice = () => {
                   {notices.map((notice, index) => (
                     <li
                       key={notice._id || index}
-                      className="bg-gray-50 p-5 rounded-xl border border-gray-200 shadow-sm"
+                      className="bg-gray-50 p-5 rounded-xl border border-gray-300 shadow-sm"
                     >
-                      <h4 className="font-bold text-gray-800 text-lg">
+                      <h4 className="font-extrabold text-black text-lg">
                         {notice.title}
                       </h4>
 
-                      <p className="text-gray-600 mt-1">
+                      <p className="text-gray-900 mt-1 font-medium">
                         {notice.description}
                       </p>
 
                       {notice.pdfUrl && (
-                        <div className="mt-3 flex items-center gap-2 text-orange-600 text-sm font-medium">
-                          <span className="bg-orange-100 px-2 py-1 rounded">
+                        <div className="mt-3 flex items-center gap-2 text-orange-700 text-sm font-bold">
+                          <span className="bg-orange-100 border border-orange-200 px-2 py-1 rounded">
                             📄 {notice.pdfUrl}
                           </span>
                         </div>
