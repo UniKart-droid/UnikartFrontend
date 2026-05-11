@@ -8,7 +8,7 @@ const AdminViewNotice = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  const API = "https://unikartweb-production.up.railway.app";
+  const API = import.meta.env.VITE_API_URL || "https://unikartweb-production.up.railway.app";
   const API_URL = `${API}/api/notices`;
 
   useEffect(() => {
