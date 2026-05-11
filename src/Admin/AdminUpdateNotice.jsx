@@ -15,7 +15,7 @@ const AdminUpdateNotice = () => {
     file: null,
   });
 
-  const API = "https://unikartweb.onrender.com";
+  const API = "https://unikartweb-production.up.railway.app";
   const API_URL = `${API}/api/notices`;
 
   const fetchNotices = async () => {

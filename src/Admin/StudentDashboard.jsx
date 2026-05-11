@@ -19,7 +19,7 @@ const StudentDashboard = () => {
 
   // ✅ UPDATED API BASE URL
   const API_BASE_URL =
-    import.meta.env.VITE_API_URL || "https://unikartweb.on.com";
+    import.meta.env.VITE_API_URL || "https://unikartweb-production.up.railway.app";
 
   // Fetch approved students
   const fetchStudents = async () => {

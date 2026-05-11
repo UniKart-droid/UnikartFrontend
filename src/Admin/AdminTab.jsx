@@ -3,7 +3,7 @@ import AdminViewNotice from './AdminViewNotice';
 import AdminSidebar from './AdminSidebar';
 import axios from "axios";
 
-const API = "https://unikartweb.onrender.com";
+const API = "https://unikartweb-production.up.railway.app";
 
 const AdminTab = () => {
   const [users, setUsers] = useState([]);
