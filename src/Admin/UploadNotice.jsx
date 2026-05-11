@@ -110,9 +110,7 @@ const UploadNotice = () => {
               Upload New Notice
             </h2>
 
-            <p className="text-gray-500 mb-8 text-sm">
-              Authorized Admin Access Only
-            </p>
+           
 
             <form
               onSubmit={formik.handleSubmit}
