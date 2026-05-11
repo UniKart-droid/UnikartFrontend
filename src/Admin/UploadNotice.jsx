@@ -11,7 +11,7 @@ const UploadNotice = () => {
 
   // ✅ DEPLOYED BACKEND URL
   const API_URL =
-    `${import.meta.env.VITE_API_URL || "https://unikartweb.onrender.com"}/api/notices`;
+    `${import.meta.env.VITE_API_URL || "https://unikartweb-production.up.railway.app"}/api/notices`;
 
   const validationSchema = Yup.object({
     title: Yup.string()

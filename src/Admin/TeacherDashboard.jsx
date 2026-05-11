@@ -12,7 +12,7 @@ const TeacherDashboard = () => {
 
   // ✅ DEPLOYED BACKEND URL
   const API_BASE_URL =
-    import.meta.env.VITE_API_URL || "https://unikartweb.onrender.com";
+    import.meta.env.VITE_API_URL || "https://unikartweb-production.up.railway.app";
 
   // Fetch approved teachers
   const fetchTeachers = async () => {

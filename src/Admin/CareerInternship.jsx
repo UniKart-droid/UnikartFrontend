@@ -28,7 +28,7 @@ const CareerInternship = ({
   // DEPLOYED BACKEND URL
   const API_BASE_URL =
     import.meta.env.VITE_API_URL ||
-    "https://unikartweb.onrender.com";
+    "https://unikartweb-production.up.railway.app";
 
   useEffect(() => {
 

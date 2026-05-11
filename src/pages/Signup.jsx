@@ -27,7 +27,7 @@ const Signup = () => {
   // CONFIGURATION: API URL
   // ==========================
   // import.meta.env agar undefined ho toh fallback direct production URL par jayega
-  const API_BASE_URL = import.meta.env.VITE_API_URL || "https://unikartweb.onrender.com";
+  const API_BASE_URL = import.meta.env.VITE_API_URL || "https://unikartweb-production.up.railway.app";
 
   useEffect(() => {
     gsap.to(headingRef.current, {
